@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGPA CALCULATOR</title>
+    <style>
+       body {
+  background-color:rgb(2, 124, 124);
+  color:whitesmoke;
+}
+
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 820px) {
+  .subject{
+    background-color:whitesmoke;
+    color:grey;
+   
+   
+    display:inline-block;
+   
+  
+  }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 600px) {
+  .credits {
+      
+      display:inline-block;
+      
+      margin:auto;
+      margin-bottom: 25px;
+    background-color:whitesmoke;
+    color:grey;
+  }
+}
+      .subject {
+        padding: 10px;
+        margin-right: 40px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border-style:unset;
+        font-family:sans-serif
+       
+}
+      
+      .credits {
+        padding: 10px;
+        border-radius: 10px;
+        border-style:unset;
+        font-family:sans-serif
+      }
+      .con {
+        width: 100%;
+        margin: 0 auto;
+        background-color:rgb(2, 124, 124);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 75px;
+      }
+.con h1{
+    font-family:cursive;
+    color: whitesmoke;
+    font-size: 40px;
+    font-weight: lighter;
+}
+.con p{
+    font-family: cursive;
+    color: whitesmoke;
+    font-weight:lighter;
+}
+.con marquee{
+    font-family: cursive;
+    font-weight: normal;
+}
+
+      .btn {
+        padding: 10px;
+        background-color:white;
+        display: block;
+        color:grey;
+        border-radius:15px;
+        margin: 20px auto;
+        font-family:cursive;
+        border-style: unset;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="con">
+      <h1>CGPA Calculator</h1>
+      <marquee width="60%" direction="right" height="100px" >
+    ....Results are out now check your CGPA!!....
+        </marquee>
+      
+      <div>
+        <input class="subject" placeholder="SGPA OF 1-1" />
+        <input class="credits" placeholder="CREDITS OF 1-1" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 1-2" />
+        <input class="credits" placeholder="CREDITS OF 1-2" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 2-1" />
+        <input class="credits" placeholder="CREDITS OF 2-1" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 2-2" />
+        <input class="credits" placeholder="CREDITS OF 2-2" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 3-1" />
+        <input class="credits" placeholder="CREDITS OF 3-1" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 3-2" />
+        <input class="credits" placeholder="CREDITS OF 3-2" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 4-1" />
+        <input class="credits" placeholder="CREDITS OF 4-1" />
+      </div>
+      <div>
+        <input class="subject" placeholder="SGPA OF 4-2" />
+        <input class="credits" placeholder="CREDITS OF 4-2" />
+      </div>
+      <button onclick="getResult()" class="btn">TOTAL CGPA=</button>
+      <p>Above>9:excellent!!..; 8-9:Good!!.. ; 7-8:can do better!!..</p>
+    </div>
+   
+  </body>
+
+  <script>
+    let marks = [];
+    let credits = [];
+    function getResult() {
+      // getting the html codes
+      let all_marks = Array.from(document.querySelectorAll(".subject"));
+      // getting the values from html input boxes
+      all_marks.forEach((node) => {
+        marks.push(node.value);
+      });
+
+      let all_credits = Array.from(document.querySelectorAll(".credits"));
+      // getting the values from html input boxes
+      all_credits.forEach((node) => {
+        credits.push(node.value);
+      });
+
+      let sum = 0;
+      let total_credits = 0;
+      // marks[0]*credits[0] + marks[1]*credits[1]...
+      for (let i = 0; i < 8; i++) {
+        sum = sum + marks[i] * credits[i];
+        total_credits += parseInt(credits[i]);
+      }
+      const h1 = document.createElement("h1");
+      h1.innerText = sum / total_credits;
+      h1.style.textAlign = "center";
+      document.body.append(h1);
+    }
+  </script>
+</html>
